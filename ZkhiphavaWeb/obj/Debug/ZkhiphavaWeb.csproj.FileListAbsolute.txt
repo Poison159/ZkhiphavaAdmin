@@ -1,0 +1,331 @@
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csprojResolveAssemblyReference.cache
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\ApplicationInsights.config
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.exe
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.exe.config
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.rsp
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csi.exe
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csi.rsp
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.AppContext.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Collections.Immutable.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.IO.FileSystem.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.exe
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.exe.config
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.rsp
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\VBCSCompiler.exe
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\VBCSCompiler.exe.config
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.dll.config
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.pdb
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Antlr3.Runtime.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.SqlServer.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.ApplicationInsights.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Google.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Web.Infrastructure.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Newtonsoft.Json.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Owin.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Net.Http.Formatting.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Helpers.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.WebHost.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Mvc.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Optimization.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Razor.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Deployment.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Razor.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\WebGrease.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Helpers.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Mvc.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Optimization.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Razor.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Deployment.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Razor.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Antlr3.Runtime.pdb
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Newtonsoft.Json.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Net.Http.Formatting.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.WebHost.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.SqlServer.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Google.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.ApplicationInsights.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.pdb
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.Mvc.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Cors.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.Cors.dll
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.Mvc.xml
+c:\users\siya\documents\visual studio 2017\Projects\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.Cors.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\ApplicationInsights.config
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.exe
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.exe.config
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.rsp
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csi.exe
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csi.rsp
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.AppContext.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.exe
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.exe.config
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.rsp
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\VBCSCompiler.exe
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.dll.config
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.pdb
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Antlr3.Runtime.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.SqlServer.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.ApplicationInsights.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Newtonsoft.Json.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Owin.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.Mvc.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Net.Http.Formatting.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Cors.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Helpers.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.Cors.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.WebHost.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Mvc.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Optimization.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Razor.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Deployment.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Razor.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\WebGrease.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.Mvc.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Net.Http.Formatting.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.Cors.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Helpers.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Mvc.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Optimization.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Razor.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Deployment.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Razor.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Antlr3.Runtime.pdb
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Newtonsoft.Json.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.WebHost.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.SqlServer.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.ApplicationInsights.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.xml
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csprojAssemblyReference.cache
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csproj.CoreCompileInputs.cache
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csproj.CopyComplete
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.dll
+C:\Users\sibongisenib\Desktop\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.pdb
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\ApplicationInsights.config
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.exe
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.exe.config
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csc.rsp
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csi.exe
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\csi.rsp
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.AppContext.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Collections.Immutable.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.IO.FileSystem.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\System.Reflection.Metadata.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.exe
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.exe.config
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\vbc.rsp
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\VBCSCompiler.exe
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\roslyn\VBCSCompiler.exe.config
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.dll.config
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\ZkhiphavaWeb.pdb
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Antlr3.Runtime.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.SqlServer.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.DependencyCollector.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.ApplicationInsights.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Google.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Web.Infrastructure.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Newtonsoft.Json.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Owin.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.Mvc.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Net.Http.Formatting.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Cors.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Helpers.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.Cors.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.WebHost.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Mvc.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Optimization.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Razor.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Deployment.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Razor.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\WebGrease.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\PagedList.Mvc.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Net.Http.Formatting.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.Cors.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Helpers.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Mvc.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Optimization.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Razor.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Deployment.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.WebPages.Razor.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Antlr3.Runtime.pdb
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Newtonsoft.Json.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\System.Web.Http.WebHost.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\EntityFramework.SqlServer.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Google.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.ApplicationInsights.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.DependencyCollector.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.xml
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.dll
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.pdb
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csprojAssemblyReference.cache
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csproj.CoreCompileInputs.cache
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Debug\ZkhiphavaWeb.csproj.CopyComplete
