@@ -40,6 +40,18 @@ namespace ZkhiphavaWeb.Models
             }
         }
 
+
+        public static Dictionary<string, List<OperatingHours>> getIndivisualOperationhours(List<OperatingHours> OpHours,List<Indawo> indawoes ) {
+            var izindawo = Helper.getIndawoNames(indawoes);
+            var retHours = new Dictionary<string, List<OperatingHours>>();
+            
+            foreach (var indawo in izindawo){
+                retHours.Add(indawo.Value, OpHours.Where(x => x.indawoId == indawo.Key).ToList());
+            }
+            return retHours;
+        }
+
+
         internal static List<OperatingHours> checkOPeratingHours(List<OperatingHours> opHours, List<Indawo> izindawo,ApplicationDbContext db)
         {
             var retOpHours = new List<OperatingHours>();
@@ -114,8 +126,8 @@ namespace ZkhiphavaWeb.Models
             var operatingHours = item.oparatingHours;
             foreach (var opHour in operatingHours) {
                 i++;
-                str += opHour.day + " | " + opHour.openingHour.ToString().Split(' ')[1].Substring(0, 5) + " to "
-                    + opHour.closingHour.ToString().Split(' ')[1].Substring(0, 5) + " " + opHour.occation ;
+                str += opHour.day + " | " + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).First() + ":"  + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).ElementAt(1) + " to "
+                    + opHour.closingHour.TimeOfDay.ToString().Split(':').Take(2).First() + ":" + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).ElementAt(1) + " " + opHour.occation ;
                 item.operatingHoursStr.Add(str);
                 str = "";
             }
@@ -139,7 +151,7 @@ namespace ZkhiphavaWeb.Models
         internal static Dictionary<int,string> getIndawoNames(List<Indawo> list)
         {
             var strList = new Dictionary<int,string>();
-            foreach (var item in list)
+            foreach (var item in list.OrderBy(x => x.name))
             {
                 strList.Add(item.id,item.name);
             }

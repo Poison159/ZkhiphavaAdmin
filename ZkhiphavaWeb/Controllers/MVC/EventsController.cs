@@ -110,6 +110,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = db.Events.Find(id);
+
             db.Events.Remove(@event);
             db.SaveChanges();
             return RedirectToAction("Index");

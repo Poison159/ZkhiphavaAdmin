@@ -326,4 +326,6 @@ D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.WindowsServer.xml
 D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\bin\Microsoft.AI.Web.xml
 D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.dll
 D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.pdb
-D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.csprojResolveAssemblyReference.cache
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.csprojAssemblyReference.cache
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.csproj.CoreCompileInputs.cache
+D:\Git\ZkhiphavaWeb\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.csproj.CopyComplete

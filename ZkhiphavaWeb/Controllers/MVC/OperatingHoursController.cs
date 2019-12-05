@@ -21,8 +21,10 @@ namespace ZkhiphavaWeb.Controllers
         public ActionResult Index()
         {
             var izindawo = db.Indawoes.ToList();
+            var operatingHours = db.OperatingHours.ToList();
             ViewBag.indawoNames = Helper.getIndawoNames(izindawo);
-            return View(Helper.checkOPeratingHours(db.OperatingHours.ToList(), izindawo, db));
+            ViewBag.sortedHours = Helper.getIndivisualOperationhours(operatingHours, izindawo);
+            return View(Helper.checkOPeratingHours(operatingHours, izindawo, db));
         }
 
         // GET: OperatingHours/Details/5

@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.artistId)
+            Artist
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.eventId)
+            Event
         </th>
         <th></th>
     </tr>
@@ -23,10 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.artistId)
+            @ViewBag.artistNames[item.artistId]
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.eventId)
+            @ViewBag.eventNames[item.eventId]
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

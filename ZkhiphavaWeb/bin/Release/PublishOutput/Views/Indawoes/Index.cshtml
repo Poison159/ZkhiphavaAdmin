@@ -6,7 +6,18 @@
 
 <h2>Index</h2>
 
-<p>
+<div style="padding-top:0px; background-color:transparent">
+
+    @using (Html.BeginForm("Index", "Indawoes", FormMethod.Get))
+    {
+        <p style="font-family:'Segoe Print'; float:left; padding-top:0px;">
+            Name @Html.TextBox("name")   vibe: @Html.DropDownList("type", "All")
+            <input type="submit" value="search" />
+        </p>
+    }
+
+</div>
+<p class="pull-right">
     @Html.ActionLink("Create New", "Create")
 </p>
 <p>@Model.Count()</p>

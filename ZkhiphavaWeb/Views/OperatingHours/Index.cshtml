@@ -6,53 +6,52 @@
 
 <h2>Index</h2>
 
-<p>
+<p style="float:right">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.day)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.openingHour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.closingHour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.occation)
-        </th>
-        <th></th>
-    </tr>
+<br />
+<div class="row">
 
-@foreach (var item in Model.OrderBy(x => x.indawoId)) {
-<tr>
-    <td>
-        @ViewBag.indawoNames[item.indawoId]
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.day)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.openingHour)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.closingHour)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.occation)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id })
-    </td>
-</tr>
-}
+    @foreach (var item in ViewBag.indawoNames)
+    {
+    <div class="col-md-4">
+        <dl class="accordion">
+            <dt>
+                <a style="font-family:'Segoe Print'; font-size:large; padding-top:0px;">@item.Value</a>
+            </dt>
 
-</table>
+            <dd>
+                @foreach (var opHour in ViewBag.sortedHours[item.Value])
+                {
+                    <li style="font-family:'Segoe Print'; font-size:large">
+                        @opHour.day  -> @opHour.openingHour.TimeOfDay till @opHour.closingHour.TimeOfDay  @if (opHour.occation != "")
+                        {@opHour.occation}
+                    </li>
+
+                    <div class="pull-right" style="font-family:'Segoe Print'">
+                        @Html.ActionLink("Edit", "Edit", new { id = opHour.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = opHour.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = opHour.id })
+                    </div>
+                }
+            </dd>
+
+        </dl>
+    </div>
+    }
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        var panels = $('.accordion > dd').hide();
+        $('.accordion > dt > a').click(function () {
+            var $this = $(this);
+            panels.slideUp();
+            $this.parent().next().slideDown();
+            return false;
+        });
+    });
+</script>
+
 

@@ -12,16 +12,20 @@
 </p>
 <table class="table">
     <tr>
-    
+        <th>
+            @Html.DisplayName("Name")
+        </th>
         <th>
             @Html.DisplayName("Image")
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @item.name
+            </td>
             <td>
                 <img src="@Url.Content(item.imgPath)" style="height: 100px; width:100px; border-radius:90%;" />
             </td>

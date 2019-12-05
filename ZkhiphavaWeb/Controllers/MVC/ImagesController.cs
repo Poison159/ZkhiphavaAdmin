@@ -17,13 +17,34 @@ namespace ZkhiphavaWeb.Controllers.mvc
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Images
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string indawoId, string eventName)
         {
-            
-            ViewBag.indawoNames = Helper.getIndawoNames(db.Indawoes.ToList());
-            int pageSize = 3;
+            var Images = db.Images.ToList();
+            var indawoNames = Helper.getIndawoNames(db.Indawoes.ToList());
+            var eventNames = Helper.getEventNames(db.Events.ToList());
+            var namesList = new List<string>();
+            var eventList = new List<string>();
+            if (!string.IsNullOrEmpty(indawoId)) {
+                var indawo = db.Indawoes.First(x => x.name == indawoId);
+                Images = Images.Where(x => x.indawoId == indawo.id).ToList();
+            }
+            if (!string.IsNullOrEmpty(eventName))
+            {
+                Images = Images.Where(x => x.eventName != null && x.eventName.Equals(eventName)).ToList();
+            }
+            ViewBag.indawoNames = indawoNames;
+            foreach (var keyPair in indawoNames){
+                namesList.Add(keyPair.Value);
+            }
+            foreach (var keyPair in eventNames)
+            {
+                eventList.Add(keyPair.Value);
+            }
+            ViewBag.eventName       = new SelectList(eventList);
+            ViewBag.indawoId        = new SelectList(namesList);
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
-            return View(db.Images.ToList().ToPagedList(pageNumber, pageSize));
+            return View(Images.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Images/Details/5

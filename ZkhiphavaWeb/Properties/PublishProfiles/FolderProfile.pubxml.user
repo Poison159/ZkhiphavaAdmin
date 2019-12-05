@@ -17,7 +17,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2019 11:26:52</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.pdb">
-      <publishTime>11/01/2019 11:26:51</publishTime>
+      <publishTime>11/01/2019 11:26:52</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>11/01/2019 11:26:52</publishTime>
@@ -221,10 +221,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2019 11:26:54</publishTime>
     </File>
     <File Include="bin/ZkhiphavaWeb.dll">
-      <publishTime>11/16/2019 14:04:23</publishTime>
+      <publishTime>12/05/2019 15:39:42</publishTime>
     </File>
     <File Include="bin/ZkhiphavaWeb.pdb">
-      <publishTime>11/05/2019 13:17:36</publishTime>
+      <publishTime>12/05/2019 15:39:42</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>11/01/2019 11:26:52</publishTime>
@@ -344,7 +344,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2019 20:49:57</publishTime>
     </File>
     <File Include="Views/ArtistEvents/Index.cshtml">
-      <publishTime>11/01/2019 11:26:52</publishTime>
+      <publishTime>11/21/2019 20:09:40</publishTime>
     </File>
     <File Include="Views/Artists/Create.cshtml">
       <publishTime>11/01/2019 11:26:52</publishTime>
@@ -359,7 +359,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2019 11:26:52</publishTime>
     </File>
     <File Include="Views/Artists/Index.cshtml">
-      <publishTime>11/05/2019 12:55:14</publishTime>
+      <publishTime>12/04/2019 13:28:49</publishTime>
     </File>
     <File Include="Views/Events/AddArtist.cshtml">
       <publishTime>11/01/2019 11:26:52</publishTime>
@@ -401,7 +401,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2019 20:17:42</publishTime>
     </File>
     <File Include="Views/Images/Index.cshtml">
-      <publishTime>11/07/2019 18:09:39</publishTime>
+      <publishTime>12/05/2019 14:23:45</publishTime>
     </File>
     <File Include="Views/Indawoes/Create.cshtml">
       <publishTime>11/16/2019 14:01:13</publishTime>
@@ -416,7 +416,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 12:06:52</publishTime>
     </File>
     <File Include="Views/Indawoes/Index.cshtml">
-      <publishTime>11/14/2019 19:50:21</publishTime>
+      <publishTime>12/05/2019 14:57:34</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>11/01/2019 11:26:52</publishTime>
@@ -449,7 +449,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 13:02:36</publishTime>
     </File>
     <File Include="Views/OperatingHours/Index.cshtml">
-      <publishTime>11/05/2019 09:56:12</publishTime>
+      <publishTime>12/03/2019 19:12:54</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/01/2019 11:26:52</publishTime>
@@ -458,7 +458,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/01/2019 11:26:52</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/15/2019 19:43:24</publishTime>
+      <publishTime>12/05/2019 14:59:44</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/05/2019 10:56:14</publishTime>

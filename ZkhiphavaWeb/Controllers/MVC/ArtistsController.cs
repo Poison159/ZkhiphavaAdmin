@@ -19,7 +19,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // GET: Artists
         public ActionResult Index(int? page)
         {
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(db.Artists.ToList().ToPagedList(pageNumber, pageSize));
         }

@@ -17,9 +17,25 @@ namespace ZkhiphavaWeb.Controllers.mvc
         private ApplicationDbContext db = new ApplicationDbContext();
         public List<string> vibes = new List<string>() { "Chilled", "Club", "Outdoor", "Pub/Bar" };
         // GET: Indawoes
-        public ActionResult Index()
+        public ActionResult Index(string name,string type)
         {
-            return View(db.Indawoes.ToList());
+            var vibesList = new List<string>();
+            var indawoes = from cr in db.Indawoes select cr;
+            var vibequery = from gmq in db.Indawoes
+                            orderby gmq.type
+                            select gmq.type;
+
+            if (!string.IsNullOrEmpty(name))
+                indawoes = indawoes.Where(x => x.name.Contains(name));
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                indawoes = indawoes.Where(x => x.type.ToString().Equals(type));
+            }
+            vibesList.AddRange(vibequery.Distinct());
+            ViewBag.type = new SelectList(vibesList);
+            db.SaveChanges();
+            return View(indawoes);
         }
 
         // GET: Indawoes/Details/5
