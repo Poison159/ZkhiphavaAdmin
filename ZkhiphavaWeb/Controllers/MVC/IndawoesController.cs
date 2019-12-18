@@ -11,7 +11,7 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers.mvc
 {
-    [Authorize]
+    
     public class IndawoesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -39,6 +39,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Indawoes/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,7 +53,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
             }
             return View(indawo);
         }
-
+        [Authorize]
         // GET: Indawoes/Create
         public ActionResult Create()
         {
@@ -65,6 +66,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,type,rating,entranceFee,name,lat,lon,address,imgPath,instaHandle")] Indawo indawo)
         {
@@ -81,6 +83,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Indawoes/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             ViewBag.type = new SelectList(vibes);
@@ -100,6 +103,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,type,rating,entranceFee,name,lat,lon,address,imgPath,instaHandle")] Indawo indawo)
         {
@@ -114,6 +118,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Indawoes/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -130,6 +135,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
 
         // POST: Indawoes/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

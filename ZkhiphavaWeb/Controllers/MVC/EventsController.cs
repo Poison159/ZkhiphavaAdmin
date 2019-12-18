@@ -10,7 +10,7 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers.mvc
 {
-    [Authorize]
+    
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -37,6 +37,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Events/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "id,indawoId,title,description,date,stratTime,endTime,price,address,lat,lon,url,imgPath")] Event @event)
         {
             if (ModelState.IsValid)
@@ -59,6 +61,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
             return View(@event);
         }
         // GET: Events/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +81,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "id,indawoId,lat,lon,,title,imgPath,description,date,stratTime,endTime,address,price,url")] Event @event)
         {
             if (ModelState.IsValid)
@@ -90,6 +94,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Events/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,11 +112,13 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
+            
             Event @event = db.Events.Find(id);
-
             db.Events.Remove(@event);
+            foreach (var image in db.Images) { if (image.eventName == @event.title) { db.Images.Remove(image); } }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

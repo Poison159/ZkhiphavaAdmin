@@ -10,7 +10,7 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers.MVC
 {
-    [Authorize]
+    
     public class SpecialInstructionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -23,6 +23,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: SpecialInstructions/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +39,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: SpecialInstructions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name");
@@ -49,6 +51,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "id,indawoId,instruction")] SpecialInstruction specialInstruction)
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name", specialInstruction.indawoId);
@@ -63,6 +66,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: SpecialInstructions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +86,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "id,indawoId,instruction")] SpecialInstruction specialInstruction)
         {
             if (ModelState.IsValid)
@@ -94,6 +99,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: SpecialInstructions/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +117,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // POST: SpecialInstructions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             SpecialInstruction specialInstruction = db.SpecialInstructions.Find(id);

@@ -11,7 +11,7 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers.MVC
 {
-    [Authorize]
+    
     public class ArtistsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -40,6 +40,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: Artists/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -50,6 +51,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "id,name,instaHandle,imgPath")] Artist artist)
         {
             if (ModelState.IsValid)
@@ -63,6 +65,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: Artists/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,6 +84,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,instaHandle,imgPath")] Artist artist)
         {
@@ -94,6 +98,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: Artists/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +116,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // POST: Artists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Artist artist = db.Artists.Find(id);

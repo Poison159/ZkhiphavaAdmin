@@ -11,7 +11,6 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers.mvc
 {
-    [Authorize]
     public class ImagesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -42,12 +41,13 @@ namespace ZkhiphavaWeb.Controllers.mvc
             }
             ViewBag.eventName       = new SelectList(eventList);
             ViewBag.indawoId        = new SelectList(namesList);
-            int pageSize = 5;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(Images.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Images/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -63,6 +63,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Images/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name");
@@ -73,6 +74,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,indawoId,imgPath")] Image image)
         {
@@ -88,6 +90,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Images/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,6 +110,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "id,indawoId,imgPath,eventName")] Image image)
         {
             if (ModelState.IsValid)
@@ -119,6 +123,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         }
 
         // GET: Images/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -136,6 +141,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // POST: Images/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Image image = db.Images.Find(id);

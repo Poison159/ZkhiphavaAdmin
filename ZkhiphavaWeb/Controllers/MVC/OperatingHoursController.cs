@@ -10,12 +10,10 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers
 {
-    [Authorize]
     public class OperatingHoursController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         public List<string> daysOfweek = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
 
         // GET: OperatingHours
         public ActionResult Index()
@@ -43,6 +41,7 @@ namespace ZkhiphavaWeb.Controllers
         }
 
         // GET: OperatingHours/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name");
@@ -55,6 +54,7 @@ namespace ZkhiphavaWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "id,indawoId,day,openingHour,occation,closingHour")] OperatingHours operatingHours)
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name", operatingHours.indawoId);
@@ -76,6 +76,7 @@ namespace ZkhiphavaWeb.Controllers
         }
 
         // GET: OperatingHours/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name");
@@ -97,6 +98,7 @@ namespace ZkhiphavaWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "id,indawoId,occation,day,openingHour,closingHour")] OperatingHours operatingHours)
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name", operatingHours.indawoId);
@@ -115,6 +117,7 @@ namespace ZkhiphavaWeb.Controllers
         }
 
         // GET: OperatingHours/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -132,6 +135,7 @@ namespace ZkhiphavaWeb.Controllers
         // POST: OperatingHours/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             OperatingHours operatingHours = db.OperatingHours.Find(id);

@@ -10,7 +10,7 @@ using ZkhiphavaWeb.Models;
 
 namespace ZkhiphavaWeb.Controllers.MVC
 {
-    [Authorize]
+    
     public class ArtistEventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -24,6 +24,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: ArtistEvents/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,6 +40,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: ArtistEvents/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.artistId = new SelectList(db.Artists, "id", "name");
@@ -51,6 +53,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "id,artistId,eventId")] ArtistEvent artistEvent)
         {
             ViewBag.artistId = new SelectList(db.Artists, "id", "name");
@@ -66,6 +69,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: ArtistEvents/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             ViewBag.artistId = new SelectList(db.Artists, "id", "name");
@@ -87,6 +91,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "id,artistId,eventId")] ArtistEvent artistEvent)
         {
             ViewBag.artistId = new SelectList(db.Artists, "id", "name");
@@ -101,6 +106,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: ArtistEvents/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -118,6 +124,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         // POST: ArtistEvents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             ArtistEvent artistEvent = db.ArtistEvents.Find(id);
