@@ -76,7 +76,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,indawoId,imgPath")] Image image)
+        public ActionResult Create([Bind(Include = "id,indawoId,imgPath,eventName")] Image image)
         {
             ViewBag.indawoId = new SelectList(db.Indawoes, "id", "name", image.indawoId);
             if (ModelState.IsValid)

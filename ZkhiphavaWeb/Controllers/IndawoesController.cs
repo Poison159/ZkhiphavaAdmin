@@ -79,19 +79,32 @@ namespace ZkhiphavaWeb.Controllers
         [HttpGet]
         public void IncDirStats(int indawoId, string plat)
         {
-            if (db.IndawoStats.Where(x => x.indawoId == indawoId)
-                .Last().dayOfWeek != DateTime.Now.DayOfWeek){
-                db.IndawoStats.Add(new IndawoStat() { indawoId = indawoId });
-               if(plat == "maps")
-                db.IndawoStats.Last().dirCounter++;
-               if(plat == "insta")
-                db.IndawoStats.Last().instaCounter++;
-            }
-            else{
+            if (db.IndawoStats.Count() == 0) {
+                var tempStat = new IndawoStat() { indawoId = indawoId };
                 if (plat == "maps")
-                    db.IndawoStats.Where(x => x.indawoId == indawoId).Last().dirCounter++;
+                    tempStat.dirCounter = 1;
                 if (plat == "insta")
-                    db.IndawoStats.Where(x => x.indawoId == indawoId).Last().instaCounter++;
+                    tempStat.instaCounter = 1;
+                db.IndawoStats.Add(tempStat);
+            }
+            else
+            {
+                var indawoStats = db.IndawoStats.Where(x => x.indawoId == indawoId).ToList();
+                if (indawoStats.Count() != 0 && indawoStats.Last().dayOfWeek == DateTime.Now.DayOfWeek)// if it's same day the find the last one to be made & increament
+                {
+                    if (plat == "maps")
+                        indawoStats.Last().dirCounter++;
+                    if (plat == "insta")
+                        indawoStats.Last().instaCounter++;
+                }
+                else { // else create new
+                    var tempStat = new IndawoStat() { indawoId = indawoId };
+                    if (plat == "maps")
+                        tempStat.dirCounter = 1;
+                    if (plat == "insta")
+                        tempStat.instaCounter = 1;
+                    db.IndawoStats.Add(tempStat);
+                }
             }
             db.SaveChanges();
         }

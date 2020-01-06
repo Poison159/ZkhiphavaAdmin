@@ -117,6 +117,10 @@ namespace ZkhiphavaWeb.Controllers.mvc
         {
             
             Event @event = db.Events.Find(id);
+            var toRemove = db.ArtistEvents.Where(x => x.eventId == id);
+            foreach (var item in toRemove){
+                db.ArtistEvents.Remove(item);
+            }
             db.Events.Remove(@event);
             foreach (var image in db.Images) { if (image.eventName == @event.title) { db.Images.Remove(image); } }
             db.SaveChanges();
