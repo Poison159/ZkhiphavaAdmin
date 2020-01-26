@@ -51,6 +51,7 @@ namespace ZkhiphavaWeb.Controllers
             //var listOfIndawoes = LoadJson(@"C:\Users\Siya\Desktop\Indawo.json");
             
             foreach (var item in listOfIndawoes) {
+                Helper.makeAllOpHoursToday(item);
                 var OpHours = db.OperatingHours.Where(x => x.indawoId == item.id).ToArray();
                 item.images = db.Images.Where(x => x.indawoId == item.id).ToList();
                 item.events = db.Events.Where(x => x.indawoId == item.id).ToList();
@@ -226,6 +227,14 @@ namespace ZkhiphavaWeb.Controllers
         {
             Indawo indawo = db.Indawoes.Find(id);
             //Indawo indawo = LoadJson(@"C:\Users\sibongisenib\Documents\ImportantRecentProjects\listOfIndawoes.json").First(x => x.id == id);
+            var OpHours = db.OperatingHours.Where(x => x.indawoId == indawo.id).ToArray();
+            indawo.oparatingHours = SortHours(OpHours);
+            indawo.open = Helper.assignSatus(indawo);
+            indawo.closingSoon = Helper.isClosingSoon(indawo);
+            indawo.openingSoon = Helper.isOpeningSoon(indawo);
+            indawo.info = Helper.getLocationInfo(indawo);
+            indawo.openOrClosedInfo = Helper.getClosedStatus(indawo);
+            Helper.getOpratingHoursStr(indawo);
             if (indawo == null)
             {
                 return NotFound();

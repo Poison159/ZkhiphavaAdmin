@@ -34,6 +34,7 @@ namespace ZkhiphavaWeb.Controllers.mvc
             }
             vibesList.AddRange(vibequery.Distinct());
             ViewBag.type = new SelectList(vibesList);
+            ViewBag.Stats = db.AppStats.ToList().Last();
             db.SaveChanges();
             return View(indawoes);
         }
@@ -42,11 +43,14 @@ namespace ZkhiphavaWeb.Controllers.mvc
         [Authorize]
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
+            if (id == null){
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             Indawo indawo = db.Indawoes.Find(id);
+            indawo.oparatingHours = db.OperatingHours.Where(x => x.indawoId == id).ToArray();
+            indawo.images = db.Images.Where(x => x.indawoId == id).ToList();
+            indawo.specialInstructions = db.SpecialInstructions.Where(x => x.indawoId == id).ToList();
             if (indawo == null)
             {
                 return HttpNotFound();

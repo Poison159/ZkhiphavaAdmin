@@ -17,10 +17,9 @@
     }
 
 </div>
-<p class="pull-right">
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>@Model.Count()</p>
+<br/><p class="pull-right"">@Html.ActionLink("Create New", "Create")</p><br />
+<p>Count : @Model.Count()</p><br />
+                             <p>Day : @ViewBag.Stats.dayOfWeek | Date : @ViewBag.Stats.date.ToShortDateString() | Counter : @ViewBag.Stats.counter </p><br/>
 <table class="table">
     <tr>
         <th>

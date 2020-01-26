@@ -24,11 +24,24 @@ namespace ZkhiphavaWeb.Controllers.mvc
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Event @event = db.Events.Find(id);
+            @event.images = db.Images.Where(x => x.eventName == @event.title).ToList();
+            var artistEvents = db.ArtistEvents.Where(x => x.eventId == @event.id);
+            List<int> artisIds = new List<int>();
+            var artists = new List<Artist>();
+            foreach (var artEv in artistEvents){
+                artisIds.Add(artEv.artistId);
+            }
+            foreach (var item in artisIds){
+                var artist = db.Artists.First(x => x.id == item);
+                if (artist != null)
+                    @event.artists.Add(artist);
+            }
             if (@event == null)
             {
                 return HttpNotFound();

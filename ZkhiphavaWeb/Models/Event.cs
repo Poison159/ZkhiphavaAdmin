@@ -9,6 +9,10 @@ namespace ZkhiphavaWeb.Models
 {
     public class Event
     {
+        public Event() {
+            images = new List<Image>();
+            artists = new List<Artist>();
+        }
         public int id { get; set; }
         [Required]
         [DisplayName("indawo Id")]

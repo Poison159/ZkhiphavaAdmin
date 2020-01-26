@@ -91,7 +91,7 @@ namespace ZkhiphavaWeb.Models
             {
                 return "LESS THAN A KM AWAY | " + "FREE ";
             }
-            else if (location.distance <= 1 && location.entranceFee != 0)
+            else if (location.distance <= 1 && location.entranceFee > 0)
             {
                 return "LESS THAN A KM AWAY | " + "R" + location.entranceFee;
             }
@@ -212,7 +212,7 @@ namespace ZkhiphavaWeb.Models
         private static double Distance(double lon1,double lat1,double lon2,double lat2)
         {
             var R = 6371; // Radius of the earth in km
-            var dLat = (lat2 - lat1).ToRadians();  // Javascript functions in radians
+            var dLat = (lat2 - lat1).ToRadians();
             var dLon = (lon2 - lon1).ToRadians();
             var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
                     Math.Cos(lat1.ToRadians()) * Math.Cos(lat2.ToRadians()) *
@@ -308,22 +308,29 @@ namespace ZkhiphavaWeb.Models
 
         }
 
-        public static bool assignSatus(Indawo indawo) {
-            var dateToday   = DateTime.Now;
-            var nextDay   = DateTime.Now.AddDays(1);
-            var dayToday    = dateToday.DayOfWeek;
+        public static void makeAllOpHoursToday(Indawo indawo) {
+            var dateToday = DateTime.Now;
+            var nextDay = DateTime.Now.AddDays(1);
             foreach (var item in indawo.oparatingHours)
             {
-                item.closingHour = new DateTime(dateToday.Year, dateToday.Month, dateToday.Day, item.closingHour.Hour,
-                    item.closingHour.Minute, item.closingHour.Second);
-                if (item.closingHour.TimeOfDay.ToString().First() == '0') {
-                    item.closingHour = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, item.closingHour.Hour,
-                    item.closingHour.Minute, item.closingHour.Second);
-                }
-                item.openingHour = new DateTime(dateToday.Year, dateToday.Month, dateToday.Day, item.openingHour.Hour,
-                        item.openingHour.Minute, item.openingHour.Second);
+                if (DateTime.Now.Day == item.openingHour.Day) {
 
+                    item.closingHour = new DateTime(dateToday.Year, dateToday.Month, dateToday.Day, item.closingHour.Hour,
+                    item.closingHour.Minute, item.closingHour.Second);
+                    if (item.closingHour.TimeOfDay.ToString().First() == '0')
+                    {
+                        item.closingHour = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, item.closingHour.Hour,
+                        item.closingHour.Minute, item.closingHour.Second);
+                    }
+                    item.openingHour = new DateTime(dateToday.Year, dateToday.Month, dateToday.Day, item.openingHour.Hour,
+                            item.openingHour.Minute, item.openingHour.Second);
+                }
             }
+        }
+
+        public static bool assignSatus(Indawo indawo) {
+            var dateToday   = DateTime.Now;
+            var dayToday    = dateToday.DayOfWeek;
             var opHours     = indawo.oparatingHours.FirstOrDefault(x => x.day.ToLower() 
                                 == dayToday.ToString().ToLower());
             if (opHours == null)
@@ -350,8 +357,15 @@ namespace ZkhiphavaWeb.Models
         }
 
         public static bool openOrClosed(OperatingHours opHours,Indawo indawo) {
+            var dayBeforeEndsAtAm = false;
+           if (DateTime.Now.TimeOfDay.ToString().First() == '0') {
+                 dayBeforeEndsAtAm = CheckDayBefore(opHours, indawo);
+                if (dayBeforeEndsAtAm == true)
+                    return true;
+           }
+
             if (opHours.openingHour <= DateTime.Now
-                && opHours.closingHour >= DateTime.Now && CheckDayBefore(opHours,indawo))
+                && opHours.closingHour >= DateTime.Now)
                 return true;
             else
                 return false;
@@ -368,20 +382,17 @@ namespace ZkhiphavaWeb.Models
 
         private static bool CheckDayBefore(OperatingHours opHours, Indawo indawo)
         {
+
             var daybefore = getDayBefore(opHours);
             OperatingHours dayBeforeOphour = getDayBeforeOpHour(daybefore,indawo);
             if (dayBeforeOphour != null)
             {
-                var dayBeforeClosingHour = dayBeforeOphour.closingHour.ToString();
-                if (dayBeforeClosingHour.Split(' ')[1].Substring(0, 5).StartsWith("0"))
+                if (dayBeforeOphour.closingHour.TimeOfDay > DateTime.Now.TimeOfDay)
                 {
-                    if (dayBeforeOphour.closingHour.Hour > DateTime.Now.Hour)
-                    {
-                        return false;
-                    }
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         private static OperatingHours getDayBeforeOpHour(string daybefore, Indawo indawo)
