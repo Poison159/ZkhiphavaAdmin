@@ -24,7 +24,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: ArtistEvents/Details/5
-        [Authorize]
+        
         public ActionResult Details(int? id)
         {
             if (id == null)

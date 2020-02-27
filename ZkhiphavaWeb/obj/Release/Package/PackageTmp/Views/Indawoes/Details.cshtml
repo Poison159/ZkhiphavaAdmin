@@ -4,55 +4,191 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Indawo</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
+<div class="row white">
+    <div class="col-md-3">
+        <div>
+            <h4>@Model.name info</h4>
+            <hr />
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lat)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.lat)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.lat)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.lat)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lon)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.lon)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.lon)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.lon)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.address)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
+            </dl>
+        </div>
+        <p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.imgPath)
-        </dt>
+            @Html.ActionLink("Back to List", "Index")<br />
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Edit ", "Edit", new { id = Model.id })  
+                @Html.ActionLink("| Delete", "Delete", new { id = Model.id })
+            }
+        </p>
+    </div>
+    <div class="col-md-3">
+        <h4>Operating hours</h4>
+        <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.imgPath)
-        </dd>
+        @foreach (var oph in Model.oparatingHours)
+        {
+            <p>@oph.day | @oph.openingHour.TimeOfDay -> @oph.closingHour.TimeOfDay</p>
+            if (User.Identity.IsAuthenticated)
+            {
+                <a href=@Url.Action("Edit", "OperatingHours", new { id = oph.id })>Edit |</a>
+                <a href=@Url.Action("Delete", "OperatingHours", new { id = oph.id })>Delete</a>
+            }
+        }
+        <br />
+        <hr />
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href=@Url.Action("CreateOp", "Indawoes", new { indawoId = Model.id })>Create</a>
+        }
 
-    </dl>
+    </div>
+    <div class="col-md-3">
+        <h4>images</h4>
+        <hr />
+        @foreach (var img in Model.images)
+        {
+            <img src="@Url.Content(img.imgPath)" style="height: 100px; width:250px; border-radius:10px;" />
+            if (User.Identity.IsAuthenticated)
+            {
+                <a href=@Url.Action("Edit", "Images", new { id = img.id })>Edit |</a>
+                <a href=@Url.Action("Delete", "Images", new { id = img.id })>Delete</a>
+            }
+        }
+        <br />
+        <hr />
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href=@Url.Action("CreateImg", "Indawoes", new { indawoId = Model.id })>Create</a>
+        }
+    </div>
+    <div class="col-md-3">
+        <h4>Special Instructions</h4>
+        <hr />
+
+        @foreach (var sp in Model.specialInstructions)
+        {
+            <p>@sp.instruction</p>
+            if (User.Identity.IsAuthenticated)
+            {
+                <a href=@Url.Action("Edit", "SpecialInstructions", new { id = sp.id })>Edit |</a>
+                <a href=@Url.Action("Delete", "SpecialInstructions", new { id = sp.id })>Delete</a>
+            }
+        }
+        <br />
+        <hr />
+        @if (User.Identity.IsAuthenticated) {
+            <a href=@Url.Action("CreateSp", "Indawoes", new { indawoId = Model.id })>Create</a>
+        }
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@if(Model.events != null){ 
+<div class="white">
+    <h3>Events</h3>
+    <br />
+    <table class="table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayName("id")
+            </th>
+            <th>
+                @Html.DisplayName("name")
+            </th>
+            <th>
+                @Html.DisplayName("price")
+            </th>
+            <th>
+                @Html.DisplayName("lat")
+            </th>
+            <th>
+                @Html.DisplayName("lon")
+            </th>
+            <th>
+                @Html.DisplayName("date")
+            </th>
+            <th>
+                @Html.DisplayName("address")
+            </th>
+            <th>
+                @Html.DisplayName("website")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.events)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    <a href="@Url.Content(item.url)">Website</a>
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href=@Url.Action("Edit", "Events", new { id = item.id })>Edit |</a>
+                        <a class="pull-right" href=@Url.Action("Delete", "Events", new { id = item.id })>Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+
+
+    </table>
+    <a class="pull-right" href=@Url.Action("CreateEvent", "Indawoes",new { indawoId = Model.id })>Create</a>
+</div>
+}
+        
+
+

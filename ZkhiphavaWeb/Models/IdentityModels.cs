@@ -42,5 +42,6 @@ namespace ZkhiphavaWeb.Models
         public System.Data.Entity.DbSet<ZkhiphavaWeb.Models.OperatingHours> OperatingHours { get; set; }
 
         public System.Data.Entity.DbSet<ZkhiphavaWeb.Models.SpecialInstruction> SpecialInstructions { get; set; }
+        public System.Data.Entity.DbSet<ZkhiphavaWeb.Models.User> AppUsers { get; set; }
     }
 }

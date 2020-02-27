@@ -31,7 +31,7 @@ namespace ZkhiphavaWeb.Controllers
         
         public List<Indawo> GetIndawoes(string userLocation, string distance, string vibe, string filter)
         {
-            Helper.IncrementAppStats(db);
+            Helper.IncrementAppStats(db,vibe);
             
             if (userLocation.Split(',')[0] == "undefined") {
                 return null;
@@ -51,12 +51,12 @@ namespace ZkhiphavaWeb.Controllers
             //var listOfIndawoes = LoadJson(@"C:\Users\Siya\Desktop\Indawo.json");
             
             foreach (var item in listOfIndawoes) {
-                Helper.makeAllOpHoursToday(item);
                 var OpHours = db.OperatingHours.Where(x => x.indawoId == item.id).ToArray();
                 item.images = db.Images.Where(x => x.indawoId == item.id).ToList();
                 item.events = db.Events.Where(x => x.indawoId == item.id).ToList();
                 item.specialInstructions = db.SpecialInstructions.Where(x => x.indawoId == item.id).ToList();
                 item.oparatingHours = SortHours(OpHours);
+                Helper.makeAllOpHoursToday(item);
                 item.open = Helper.assignSatus(item);
                 item.closingSoon = Helper.isClosingSoon(item);
                 item.openingSoon = Helper.isOpeningSoon(item);
@@ -110,6 +110,20 @@ namespace ZkhiphavaWeb.Controllers
             db.SaveChanges();
         }
 
+        [Route("api/RegisterUser")]
+        [HttpGet]
+        public User Register(string name, string email, string mobileNumber, string password) {
+            var user = new User { name = name, email = email, mobileNumber = mobileNumber, password = Helper.GetHashString(password)};
+            if (db.AppUsers.ToList().First(x => x.password == Helper.GetHashString(password)) == null)
+            {
+                db.AppUsers.Add(user);
+                db.SaveChanges();
+            }
+            else {
+                return db.AppUsers.ToList().First(x => x.password == Helper.GetHashString(password));
+            }
+            return db.AppUsers.ToList().Last();
+        }
        
 
         public string getNextDay(string curDay)
@@ -161,9 +175,35 @@ namespace ZkhiphavaWeb.Controllers
             }
             return fav;
         }
+        [Route("api/addFavorite")]
+        [HttpGet]
+        public void addFavorite(int userId, int indawoId) {
+            
+            var user = db.AppUsers.Find(userId);
+            if(!user.LikesLocations.Split(',').Contains(indawoId.ToString()))
+                user.LikesLocations += indawoId.ToString() + ",";
+            db.SaveChanges();
+        }
 
+        [Route("api/addInterested")]
+        [HttpGet]
+        public void addInterested(int userId, int eventId)
+        {
+            var user = db.AppUsers.Find(userId);
+            user.interestedEvents += eventId.ToString() + ",";
+            db.SaveChanges();
+        }
 
-        
+        [Route("api/getUserData")]
+        [HttpGet]
+
+        public object getUserData(int userId)
+        {
+            var user = db.AppUsers.First(x => x.id == userId);
+            return Helper.LiekdFromString(user.LikesLocations, user.interestedEvents , db.Indawoes.ToList(),db.Events.ToList());
+            
+        }
+
 
         [Route("api/Event")]
         [HttpGet]

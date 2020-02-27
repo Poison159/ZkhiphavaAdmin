@@ -10,14 +10,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.IO;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using System.Text;
+using System.Device.Location;
 
 namespace ZkhiphavaWeb.Models
 {
     public static class Helper
     {
-        public static List<Indawo> GetNearByLocations(string Currentlat, string Currentlng,int distance,List<Indawo> indawo)
+        public static List<Indawo> GetNearByLocations(string Currentlat, string Currentlng, int distance, List<Indawo> indawo)
         {
-            var currentLocation = DbGeography.FromText("POINT( " + Currentlng + " " + Currentlat + " )");
             try
             {
                 var userLocationLat = Convert.ToDouble(Currentlat, CultureInfo.InvariantCulture);
@@ -27,7 +29,6 @@ namespace ZkhiphavaWeb.Models
                 {
                     var locationLat = Convert.ToDouble(item.lat, CultureInfo.InvariantCulture);
                     var locationLon = Convert.ToDouble(item.lon, CultureInfo.InvariantCulture);
-                    var ndawoLocation = DbGeography.FromText("POINT( " + item.lon + " " + item.lat + " )");
                     var distanceToIndawo = distanceToo(locationLat, locationLon, userLocationLat, userLocationLong, 'K');
                     item.distance = Math.Round(distanceToIndawo);
                 }
@@ -36,29 +37,45 @@ namespace ZkhiphavaWeb.Models
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message); 
+                throw new Exception(ex.Message);
             }
         }
 
+        public static Coordinates getLatLon() {
+            double lat = 0;
+            double lon = 0;
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Default);
+            watcher.Start(); //started watcher
+            GeoCoordinate coord = watcher.Position.Location;
+            if (!watcher.Position.Location.IsUnknown)
+            {
+                 lat = coord.Latitude; //latitude
+                 lon = coord.Longitude;  //logitude
+            }
+            return new Coordinates(lat, lon);
+        }
 
-        public static Dictionary<string, List<OperatingHours>> getIndivisualOperationhours(List<OperatingHours> OpHours,List<Indawo> indawoes ) {
+        public static Dictionary<string, List<OperatingHours>> getIndivisualOperationhours(List<OperatingHours> OpHours, List<Indawo> indawoes)
+        {
             var izindawo = Helper.getIndawoNames(indawoes);
             var retHours = new Dictionary<string, List<OperatingHours>>();
-            
-            foreach (var indawo in izindawo){
+
+            foreach (var indawo in izindawo)
+            {
                 retHours.Add(indawo.Value, OpHours.Where(x => x.indawoId == indawo.Key).ToList());
             }
             return retHours;
         }
 
 
-        internal static List<OperatingHours> checkOPeratingHours(List<OperatingHours> opHours, List<Indawo> izindawo,ApplicationDbContext db)
+        internal static List<OperatingHours> checkOPeratingHours(List<OperatingHours> opHours, List<Indawo> izindawo, ApplicationDbContext db)
         {
             var retOpHours = new List<OperatingHours>();
             var ids = getIndawoIds(izindawo);
             foreach (var opHour in opHours)
             {
-                if (!ids.Contains(opHour.indawoId)){
+                if (!ids.Contains(opHour.indawoId))
+                {
                     db.OperatingHours.Remove(opHour);
                 }
             }
@@ -66,9 +83,10 @@ namespace ZkhiphavaWeb.Models
             return db.OperatingHours.ToList();
         }
 
-        private static List<int> getIndawoIds(List<Indawo> izindawo){
+        private static List<int> getIndawoIds(List<Indawo> izindawo)
+        {
             var ret = new List<int>();
-            foreach (var item in izindawo){ret.Add(item.id);}
+            foreach (var item in izindawo) { ret.Add(item.id); }
             return ret;
         }
 
@@ -81,7 +99,8 @@ namespace ZkhiphavaWeb.Models
                 return items;
             }
         }
-        public static string getLocationInfo(Indawo location) {
+        public static string getLocationInfo(Indawo location)
+        {
 
             if (location.distance > 1 && location.entranceFee > 0)
             {
@@ -104,15 +123,23 @@ namespace ZkhiphavaWeb.Models
                 return "";
             }
         }
-        
-        public static string getClosedStatus(Indawo location) {
-            if (location.open == false && location.closingSoon == false && location.openingSoon == false) {
+
+        public static string getClosedStatus(Indawo location)
+        {
+            if (location.open == false && location.closingSoon == false && location.openingSoon == false)
+            {
                 return "CLOSED";
-            } else if (location.open == true && location.closingSoon == true) {
+            }
+            else if (location.open == true && location.closingSoon == true)
+            {
                 return "CLOSING SOON";
-            }else if (location.open == false && location.openingSoon == true){
+            }
+            else if (location.open == false && location.openingSoon == true)
+            {
                 return "OPENING SOON";
-            }else if (location.open == true && location.closingSoon == false){
+            }
+            else if (location.open == true && location.closingSoon == false)
+            {
                 return "OPEN";
             }
             return "";
@@ -124,29 +151,51 @@ namespace ZkhiphavaWeb.Models
             List<string> retStr = new List<string>();
             int i = 0;
             var operatingHours = item.oparatingHours;
-            foreach (var opHour in operatingHours) {
+            foreach (var opHour in operatingHours)
+            {
                 i++;
-                str += opHour.day + " | " + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).First() + ":"  + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).ElementAt(1) + " to "
-                    + opHour.closingHour.TimeOfDay.ToString().Split(':').Take(2).First() + ":" + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).ElementAt(1) + " " + opHour.occation ;
+                str += opHour.day + " | " + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).First() + ":" + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).ElementAt(1) + " to "
+                    + opHour.closingHour.TimeOfDay.ToString().Split(':').Take(2).First() + ":" + opHour.openingHour.TimeOfDay.ToString().Split(':').Take(2).ElementAt(1) + " " + opHour.occation;
                 item.operatingHoursStr.Add(str);
                 str = "";
             }
         }
 
-        internal static void IncrementAppStats(ApplicationDbContext db)
+        internal static void IncrementAppStats(ApplicationDbContext db, string vibe)
         {
-            if (db.AppStats.Count() != 0) {
+
+
+            if (db.AppStats.Count() != 0)
+            {
                 if (db.AppStats.ToList().Last().dayOfWeek != DateTime.Now.DayOfWeek)
                 {
-                    db.AppStats.Add(new AppStat());
+                    var appStat = new AppStat();
+                    increamentVibe(appStat, vibe);
+                    db.AppStats.Add(appStat);
+                    db.AppStats.ToList().Last().counter += 1;
+                }
+                else {
+                    increamentVibe(db.AppStats.ToList().Last(), vibe);
                     db.AppStats.ToList().Last().counter++;
                 }
-                else
-                    db.AppStats.ToList().Last().counter++;
-            }else
+            }
+            else {
                 db.AppStats.Add(new AppStat() { counter = 1 });
+            }
             db.SaveChanges();
         }
+
+        public static void increamentVibe(AppStat appStat, string vibe) {
+            if (vibe.Trim().ToLower() == "chilled")
+                appStat.chilledCounter++;
+            else if (vibe.Trim().ToLower() == "pub/bar")
+                appStat.pubCounter++;
+            else if (vibe.Trim().ToLower() == "club")
+                appStat.clubCounter++;
+            else
+                appStat.outdoorCounter++;
+        }
+
 
         internal static Dictionary<int,string> getIndawoNames(List<Indawo> list)
         {
@@ -220,6 +269,27 @@ namespace ZkhiphavaWeb.Models
             var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
             var d = R * c; // Distance in km
             return d;
+        }
+
+        internal static object LiekdFromString(string likesLocations,string interestedEvents, List<Indawo> indawoes, List<Event> events)
+        {
+            var liked = new List<Indawo>();
+            var interested = new List<Event>();
+            if(!string.IsNullOrEmpty(likesLocations))
+            foreach (var indawoId in likesLocations.Split(',')){
+                try{
+                    liked.Add(indawoes.First(x => x.id == Convert.ToInt32(indawoId)));
+                }
+                catch (Exception){}
+            }
+            if(!string.IsNullOrEmpty(interestedEvents))
+            foreach (var eventId in interestedEvents.Split(',')){
+                try{
+                    interested.Add(events.First(x => x.id == Convert.ToInt32(eventId)));
+                }
+                catch (Exception) { }
+            }
+            return new { liked = liked.Distinct().ToList(), interested = interested };
         }
 
         public static double deg2rad(double deg)
@@ -313,7 +383,7 @@ namespace ZkhiphavaWeb.Models
             var nextDay = DateTime.Now.AddDays(1);
             foreach (var item in indawo.oparatingHours)
             {
-                if (DateTime.Now.Day == item.openingHour.Day) {
+                if (DateTime.Now.DayOfWeek.ToString().ToLower() == item.day.ToLower()) {
 
                     item.closingHour = new DateTime(dateToday.Year, dateToday.Month, dateToday.Day, item.closingHour.Hour,
                     item.closingHour.Minute, item.closingHour.Second);
@@ -357,18 +427,34 @@ namespace ZkhiphavaWeb.Models
         }
 
         public static bool openOrClosed(OperatingHours opHours,Indawo indawo) {
-            var dayBeforeEndsAtAm = false;
-           if (DateTime.Now.TimeOfDay.ToString().First() == '0') {
-                 dayBeforeEndsAtAm = CheckDayBefore(opHours, indawo);
-                if (dayBeforeEndsAtAm == true)
-                    return true;
-           }
+           // var dayBeforeEndsAtAm = false;
+           //if (DateTime.Now.TimeOfDay.ToString().First() == '0') {
+           //      dayBeforeEndsAtAm = CheckDayBefore(opHours, indawo);
+           //     if (dayBeforeEndsAtAm == true)
+           //         return true;
+           //}
 
             if (opHours.openingHour <= DateTime.Now
                 && opHours.closingHour >= DateTime.Now)
                 return true;
             else
                 return false;
+        }
+
+
+        public static byte[] GetHash(string inputString)
+        {
+            HashAlgorithm algorithm = SHA256.Create();
+            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+        }
+
+        public static string GetHashString(string inputString)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in GetHash(inputString))
+                sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
         }
 
         internal static List<Artist> getArtists(IEnumerable<ArtistEvent> eventArtistIds,ApplicationDbContext db)

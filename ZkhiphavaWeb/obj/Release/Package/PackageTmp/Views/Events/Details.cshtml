@@ -5,53 +5,82 @@
 }
 
 <h2>Details</h2>
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <h4>Event</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.indawoId)
+                </dt>
 
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.indawoId)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.indawoId)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.indawoId)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.date)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.date)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.date)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.stratTime)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.stratTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.stratTime)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.stratTime)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.endTime)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.endTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.endTime)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.endTime)
-        </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4>images</h4>
+        <hr />
+        @foreach (var img in Model.images)
+        {
+            <img src="@Url.Content(img.imgPath)" style="height: 100px; width:250px; border-radius:10px;" />
+            <a href=@Url.Action("Edit", "Images", new { id = img.id })>Edit</a>
+            <a class="pull-right" href=@Url.Action("Delete", "Images", new { id = img.id })>Delete</a>
+        }
+        <br />
+        <br />
+        <br />
+        <a href=@Url.Action("Create", "Images")>Create</a>
 
-    </dl>
+    </div>
+    <div class="col-md-3">
+        <h4>Artists</h4>
+        <hr />
+        @foreach (var artist in Model.artists)
+        {
+            <img src="@Url.Content(artist.imgPath)" style="height: 100px; width:250px; border-radius:10px;" />
+            <a href=@Url.Action("Edit", "Artists", new { id = artist.id })>Edit</a>
+        }
+    </div>
 </div>
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")

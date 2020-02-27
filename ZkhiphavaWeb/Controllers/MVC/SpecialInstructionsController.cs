@@ -23,7 +23,7 @@ namespace ZkhiphavaWeb.Controllers.MVC
         }
 
         // GET: SpecialInstructions/Details/5
-        [Authorize]
+        
         public ActionResult Details(int? id)
         {
             if (id == null)

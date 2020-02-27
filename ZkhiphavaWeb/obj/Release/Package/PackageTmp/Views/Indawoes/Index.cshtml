@@ -1,93 +1,72 @@
-﻿@model IEnumerable< ZkhiphavaWeb.Models.Indawo>
+﻿@model IEnumerable<ZkhiphavaWeb.Models.Indawo>
 
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div style="padding-top:0px; background-color:transparent">
 
     @using (Html.BeginForm("Index", "Indawoes", FormMethod.Get))
     {
-        <p style="font-family:'Segoe Print'; float:left; padding-top:0px;">
+        <p class="yellow" style="font-family:'Segoe Print'; float:left; padding-top:0px;">
             Name @Html.TextBox("name")   vibe: @Html.DropDownList("type", "All")
             <input type="submit" value="search" />
         </p>
     }
 
 </div>
-<p class="pull-right">
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>@Model.Count()</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.entranceFee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.instaHandle)
-        </th>
-        <th></th>
+<p class="pull-right">@Html.ActionLink("Create New", "Create")</p>
+<br />
+<br />
+    @foreach (var item in Model.OrderBy(x => x.name))
+    {
+        <div class="col-md-4 white">
+            <div class="card" style="width:320px;height:300px;">
+                <img style="width:300px;height:150px" class="card-img-top" src=@item.images.ElementAt(0).imgPath alt="Card image">
+                <div class="card-body">
+                    <h4 id="name" class="card-title yellow">@item.name  (@item.entranceFee ZAR)</h4>
+                    <div class="card-text">
+                        @for (int i = 0; i < item.rating; i++){ <span class="fa fa-star yellow"></span> }
+                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "pull-right btn btn-sm btn-primary" })
+                        <a class="pull-right btn btn-primary btn-sm" onclick="getDirections('@item.address')" >Directions</a>
+                        <a class="pull-right btn btn-primary btn-sm" href="@Url.Content(item.instaHandle)">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+<hr />
+<h4 class="yellow pull-right">
+    On @ViewBag.Stats.date.DayOfWeek @ViewBag.Stats.date.Day
+    there were @ViewBag.Stats.counter clicks.
+</h4>
+<table style="padding-top:0px;" class="table-condensed table-bordered text-center">
+    <tr class="yellow">
+        <th>chilled</th>
+        <th>club</th>
+        <th>pub</th>
+        <th>outdor</th>
     </tr>
-
-@foreach (var item in Model.OrderBy(x => x.name)) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.type)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.rating)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.entranceFee)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.lat)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.lon)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.address)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.instaHandle)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id })
-    </td>
-</tr>
-}
-
+    <tr class="yellow">
+        <td>@ViewBag.Stats.chilledCounter</td>
+        <td>@ViewBag.Stats.clubCounter</td>
+        <td>@ViewBag.Stats.pubCounter</td>
+        <td>@ViewBag.Stats.outdoorCounter</td>
+    </tr>
 </table>
+<p class="yellow">locations = @Model.Count()</p>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    function getDirections(address) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                window.location.href = 'http://maps.google.com/maps?saddr=' +
+                position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + '&daddr=' + encodeURIComponent(address);
+            });
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    
+</script>
