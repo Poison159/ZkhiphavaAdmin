@@ -20,10 +20,9 @@ namespace ZkhiphavaWeb
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
+           
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            app.UseWebApi(config);
+            
             
             
             // Configure the db context, user manager and signin manager to use a single instance per request
@@ -70,9 +69,15 @@ namespace ZkhiphavaWeb
 
             //Toke gen
             app.UseOAuthBearerTokens(OAuthOptions);
-            //app.UseOAuthAuthorizationServer(OAuthOptions);
-            //app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-            //app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            app.UseOAuthAuthorizationServer(OAuthOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+            HttpConfiguration config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+            app.UseWebApi(config);
+
+
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",

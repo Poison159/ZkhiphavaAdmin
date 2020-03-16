@@ -1,99 +1,88 @@
 ﻿@model IEnumerable<ZkhiphavaWeb.Models.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Events";
 }
+<div class="container">
+    <div id="myCarousel" class="carousel slide col-md-12" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-<h2 class="white">Index</h2>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table white">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.id)
-        </th>
-        <th>
-            eventName
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.stratTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.endTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.url)
-        </th>
-        <th></th>
-    </tr>
+            <div class="item active">
+                <h3 style="font-family:'Segoe Print'" class="text-center yellow">@Model.Where(x => x.indawoId == 9).ElementAt(0).title</h3>
+                <img src=@Model.Where(x => x.indawoId == 9).ElementAt(0).imgPath alt="Chania">
+                <div class="carousel-caption">
+                    <a href="@Url.Content(Model.Where(x => x.indawoId == 9).ElementAt(0).url)" class="btn btn-primary"> Details</a>
+                    <a class="btn btn-primary" onclick="getDirections('@Model.Where(x => x.indawoId == 9).ElementAt(0).address')">Directions</a>
+                    <a class="btn btn-primary"> Tickets</a>
+                </div>
+            </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.indawoId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stratTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.url)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+            <div class="item">
+                <h3 style="font-family:'Segoe Print'" class="text-center yellow">@Model.Where(x => x.indawoId == 9).ElementAt(1).title</h3>
+                <img src=@Model.Where(x => x.indawoId == 9).ElementAt(1).imgPath alt="Chicago">
+                <div class="carousel-caption">
+                    <a href="@Url.Content(Model.Where(x => x.indawoId == 9).ElementAt(0).url)" class="btn btn-primary"> Details</a>
+                    <a class="btn btn-primary" onclick="getDirections('@Model.Where(x => x.indawoId == 9).ElementAt(0).address')">Directions</a>
+                    <div class="btn btn-primary"> Tickets</div>
+                </div>
+            </div>
 
-</table>
+            <div class="item">
+                <h3 style="font-family:'Segoe Print'" class="text-center yellow">@Model.Where(x => x.indawoId == 9).ElementAt(2).title</h3>
+                <img src=@Model.Where(x => x.indawoId == 9).ElementAt(2).imgPath alt="New York">
+                <div class="carousel-caption">
+                    <a href="@Url.Content(Model.Where(x => x.indawoId == 9).ElementAt(0).url)" class="btn btn-primary"> Details</a>
+                    <a class="btn btn-primary" onclick="getDirections('@Model.Where(x => x.indawoId == 9).ElementAt(0).address')">Directions</a>
+                    <div class="btn btn-primary"> Tickets</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <hr />
+    <h2 style="font-family:'Segoe Print'" class="yellow text-center">Location events</h2>
+    @foreach (var item in Model.Where(x => x.indawoId != 9))
+    {
+        <div class="card" style="width: 50rem;">
+            <h3 style="font-family:'Segoe Print'" class="yellow">@item.title.ToUpper()</h3>
+            <img style="width:300px; height: 200px;" src=@item.imgPath class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="@Url.Content(Model.Where(x => x.indawoId == 9).ElementAt(0).url)" class="btn btn-primary"> Destails</a>
+                <a class="btn btn-primary" onclick="getDirections('@Model.Where(x => x.indawoId == 9).ElementAt(0).address')">Directions</a>
+                <a class="btn btn-primary"> Tickets</a>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    function getDirections(address) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                window.location.href = 'https://maps.google.com/maps?saddr=' +
+                    position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + '&daddr=' + encodeURIComponent(address);
+            });
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+</script>
+

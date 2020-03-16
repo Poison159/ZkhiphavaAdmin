@@ -439,3 +439,11 @@ C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\obj\Release\Zkhi
 C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.csproj.CopyComplete
 C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.dll
 C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\obj\Release\ZkhiphavaWeb.pdb
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\Microsoft.Owin.Cors.dll
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\Microsoft.Owin.Host.HttpListener.dll
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\Microsoft.Owin.Hosting.dll
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\System.Web.Http.Owin.dll
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\Microsoft.Owin.Cors.xml
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\Microsoft.Owin.Host.HttpListener.xml
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\Microsoft.Owin.Hosting.xml
+C:\Users\Hadebe2\Downloads\Projects\ZkhiphavaAdmin\ZkhiphavaWeb\bin\System.Web.Http.Owin.xml

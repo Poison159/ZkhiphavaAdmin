@@ -18,6 +18,9 @@ using System.Web.Http.Description;
 using ZkhiphavaWeb;
 using ZkhiphavaWeb.Models;
 using Microsoft.Owin.Host.SystemWeb;
+using System.Web;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ZkhiphavaWeb.Controllers
 {
@@ -26,9 +29,21 @@ namespace ZkhiphavaWeb.Controllers
     public class IndawoesController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private ApplicationUserManager _userManager;
+        public int MyProperty { get; set; }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         // GET: api/Indawoes
-        
+
         public List<Indawo> GetIndawoes(string userLocation, string distance, string vibe, string filter)
         {
             Helper.IncrementAppStats(db,vibe);
@@ -110,20 +125,63 @@ namespace ZkhiphavaWeb.Controllers
             db.SaveChanges();
         }
 
+        [Route("api/CheckToken")]
+        [HttpGet]
+        public bool getToken(string email)
+        {
+            var token = db.Tokens.ToList().First(x => x._userId == email);
+            if (token != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         [Route("api/RegisterUser")]
         [HttpGet]
-        public User Register(string name, string email, string mobileNumber, string password) {
-            var user = new User { name = name, email = email, mobileNumber = mobileNumber, password = Helper.GetHashString(password)};
-            if (db.AppUsers.ToList().First(x => x.password == Helper.GetHashString(password)) == null)
+        public object Register(string email, string password) {
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager)
             {
-                db.AppUsers.Add(user);
-                db.SaveChanges();
+                AllowOnlyAlphanumericUserNames = false,
+                RequireUniqueEmail = true
+            };
+            var user = new ApplicationUser();
+            
+            user.Email = email;
+            user.UserName = email;
+            var result = UserManager.Create(user, password);
+            if (result.Succeeded)
+            {
+                var token = saveAppUserAndToken(user);
+                return  token;
             }
             else {
-                return db.AppUsers.ToList().First(x => x.password == Helper.GetHashString(password));
+                return  result;
             }
-            return db.AppUsers.ToList().Last();
         }
+
+        public Token saveAppUserAndToken(ApplicationUser user) {
+            var appUser = new User() { email = user.Email, password = user.PasswordHash };
+            var token = createToken(user.Email);
+            db.AppUsers.Add(appUser);
+            db.Tokens.Add(token);
+            db.SaveChanges();
+            return token;
+        }
+
+
+        public Token createToken(string email) {
+                var tokenString = Guid.NewGuid().ToString();
+                var grantDate = DateTime.Now;
+                var endDate = grantDate.AddDays(90);
+                return  new Token(email, tokenString, grantDate, endDate);
+        }
+
+       
        
 
         public string getNextDay(string curDay)

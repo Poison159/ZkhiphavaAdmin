@@ -1,5 +1,5 @@
-﻿@model IEnumerable<ZkhiphavaWeb.Models.Indawo>
-
+﻿@model PagedList.IPagedList<ZkhiphavaWeb.Models.Indawo>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
 }
@@ -15,58 +15,65 @@
     }
 
 </div>
-<p class="pull-right">@Html.ActionLink("Create New", "Create")</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p class="pull-right">@Html.ActionLink("Create New", "Create")</p>
+}
+
 <br />
 <br />
-    @foreach (var item in Model.OrderBy(x => x.name))
-    {
-        <div class="col-md-4 white">
-            <div class="card" style="width:320px;height:300px;">
-                <img style="width:300px;height:150px" class="card-img-top" src=@item.images.ElementAt(0).imgPath alt="Card image">
-                <div class="card-body">
-                    <h4 id="name" class="card-title yellow">@item.name  (@item.entranceFee ZAR)</h4>
-                    <div class="card-text">
-                        @for (int i = 0; i < item.rating; i++){ <span class="fa fa-star yellow"></span> }
-                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "pull-right btn btn-sm btn-primary" })
-                        <a class="pull-right btn btn-primary btn-sm" onclick="getDirections('@item.address')" >Directions</a>
-                        <a class="pull-right btn btn-primary btn-sm" href="@Url.Content(item.instaHandle)">Instagram</a>
-                    </div>
+@foreach (var item in Model.OrderBy(x => x.name))
+{
+    <div class="col-md-4 white">
+        <div class="card" style="width:320px;height:300px;">
+            <img style="width:300px;height:150px" class="card-img-top" src=@item.images.ElementAt(0).imgPath alt="Card image">
+            <div class="card-body">
+                <h4 id="name" style="font-family:'Segoe Print'" class="card-title yellow">@item.name  (@item.entranceFee ZAR)</h4>
+                <div class="card-text">
+                    @for (int i = 0; i < item.rating; i++)
+                    {<span class="fa fa-star yellow"></span>}
+                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "pull-right btn btn-sm btn-primary" })
+                    <a class="pull-right btn btn-primary btn-sm" onclick="getDirections('@item.address')">Directions</a>
+                    <a class="pull-right btn btn-primary btn-sm" href="@Url.Content(item.instaHandle)">Instagram</a>
                 </div>
             </div>
         </div>
-    }
-
-<hr />
-<h4 class="yellow pull-right">
-    On @ViewBag.Stats.date.DayOfWeek @ViewBag.Stats.date.Day
-    there were @ViewBag.Stats.counter clicks.
-</h4>
-<table style="padding-top:0px;" class="table-condensed table-bordered text-center">
-    <tr class="yellow">
-        <th>chilled</th>
-        <th>club</th>
-        <th>pub</th>
-        <th>outdor</th>
-    </tr>
-    <tr class="yellow">
-        <td>@ViewBag.Stats.chilledCounter</td>
-        <td>@ViewBag.Stats.clubCounter</td>
-        <td>@ViewBag.Stats.pubCounter</td>
-        <td>@ViewBag.Stats.outdoorCounter</td>
-    </tr>
-</table>
-<p class="yellow">locations = @Model.Count()</p>
+    </div>
+}
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@if (User.Identity.IsAuthenticated)
+{
+    <h4 class="yellow pull-right">
+        On @ViewBag.Stats.date.DayOfWeek @ViewBag.Stats.date.Day
+        there were @ViewBag.Stats.counter clicks.
+    </h4>
+    <table style="padding-top:0px;" class="table-condensed table-bordered text-center">
+        <tr class="yellow">
+            <th>chilled</th>
+            <th>club</th>
+            <th>pub</th>
+            <th>outdor</th>
+        </tr>
+        <tr class="yellow">
+            <td>@ViewBag.Stats.chilledCounter</td>
+            <td>@ViewBag.Stats.clubCounter</td>
+            <td>@ViewBag.Stats.pubCounter</td>
+            <td>@ViewBag.Stats.outdoorCounter</td>
+        </tr>
+    </table>
+    <p class="yellow">locations = @Model.Count()</p>
+}
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
     function getDirections(address) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                window.location.href = 'http://maps.google.com/maps?saddr=' +
-                position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + '&daddr=' + encodeURIComponent(address);
+                window.location.href = 'https://maps.google.com/maps?saddr=' +
+                    position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + '&daddr=' + encodeURIComponent(address);
             });
         } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
-    
+
 </script>

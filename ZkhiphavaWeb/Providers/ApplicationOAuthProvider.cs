@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using ZkhiphavaWeb.Models;
+using Microsoft.Owin;
 
 namespace ZkhiphavaWeb.Providers
 {
@@ -29,6 +30,7 @@ namespace ZkhiphavaWeb.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+            SetContextHeaders(context);
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
@@ -46,6 +48,14 @@ namespace ZkhiphavaWeb.Providers
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
+        }
+
+        private void SetContextHeaders(OAuthGrantResourceOwnerCredentialsContext context)
+        {
+            context.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+            context.Response.Headers.Add("Access-Control-Allow-Methods", new[] { "GET, PUT, DELETE, POST, OPTIONS" });
+            context.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "Content-Type, Accept, Authorization" });
+            context.Response.Headers.Add("Access-Control-Max-Age", new[] { "1728000" });
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -19,10 +20,11 @@ namespace ZkhiphavaWeb.Controllers.mvc
 
         public List<string> vibes = new List<string>() { "Chilled", "Club", "Outdoor", "Pub/Bar" };
         // GET: Indawoes
-        public ActionResult Index(string name,string type)
+        public ActionResult Index(int? page, string name,string type)
         {
             var vibesList = new List<string>();
             var indawoes = from cr in db.Indawoes select cr;
+            var rnd = new Random();
             var vibequery = from gmq in db.Indawoes
                             orderby gmq.type
                             select gmq.type;
@@ -42,7 +44,9 @@ namespace ZkhiphavaWeb.Controllers.mvc
             ViewBag.type = new SelectList(vibesList);
             ViewBag.Stats = db.AppStats.ToList().Last();
             ViewBag.Stats.counter += 1;
-            return View(indawoes);
+            int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            return View(indawoes.ToList().OrderBy(x => rnd.Next()).ToList().ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Indawoes/Details/5
