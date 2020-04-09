@@ -17,11 +17,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Ziwava", "Index", "Home", new { style = "color:yellow" }, new { @class = "navbar-brand yellow" })
+                @Html.ActionLink("Ziwava", "Index", "Home", new { @class = "yellow" }, new { @class = "navbar-brand yellow" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Indawoes", "Index", "Indawoes", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Locations", "Index", "Indawoes", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Events", "Index", "Events", new { area = "" }, null)</li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -44,6 +44,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/Ziwava.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

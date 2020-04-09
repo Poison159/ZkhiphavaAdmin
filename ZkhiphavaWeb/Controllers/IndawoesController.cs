@@ -60,26 +60,12 @@ namespace ZkhiphavaWeb.Controllers
             var filters = new List<string>() { "distance", "rating", "damage" };
             var rnd = new Random();
             var locations = db.Indawoes.ToList().Where(x => x.id != 9 
-                && x.type.ToLower().Trim() == vibe.ToLower().Trim()).OrderBy(x => rnd.Next()).ToList(); 
+                && x.type.ToLower().Trim() == vibe.ToLower().Trim()).OrderBy(x => rnd.Next()).ToList();
             
             var listOfIndawoes = Helper.GetNearByLocations(lat, lon, Convert.ToInt32(distance), locations); // TODO: Use distance to narrow search
             //var listOfIndawoes = LoadJson(@"C:\Users\Siya\Desktop\Indawo.json");
-            
-            foreach (var item in listOfIndawoes) {
-                var OpHours = db.OperatingHours.Where(x => x.indawoId == item.id).ToArray();
-                item.images = db.Images.Where(x => x.indawoId == item.id).ToList();
-                item.events = db.Events.Where(x => x.indawoId == item.id).ToList();
-                item.specialInstructions = db.SpecialInstructions.Where(x => x.indawoId == item.id).ToList();
-                item.oparatingHours = SortHours(OpHours);
-                Helper.makeAllOpHoursToday(item);
-                item.open = Helper.assignSatus(item);
-                item.closingSoon = Helper.isClosingSoon(item);
-                item.openingSoon = Helper.isOpeningSoon(item);
-                item.info = Helper.getLocationInfo(item);
-                item.openOrClosedInfo = Helper.getClosedStatus(item);
-                Helper.getOpratingHoursStr(item);
-            }
 
+            Helper.prepareLocation(listOfIndawoes, db);
             if (!string.IsNullOrEmpty(filter) && filter != "None" && filters.Contains(filter)) {
                 if (filter == "distance")
                     listOfIndawoes = listOfIndawoes.OrderBy(x => x.distance).ToList();
@@ -127,16 +113,27 @@ namespace ZkhiphavaWeb.Controllers
 
         [Route("api/CheckToken")]
         [HttpGet]
-        public bool getToken(string email)
+        public object getToken(string email, string password)
         {
-            var token = db.Tokens.ToList().First(x => x._userId == email);
-            if (token != null)
+            var userStore = new UserStore<IdentityUser>();
+            var userManager = new UserManager<IdentityUser>(userStore);
+            var user = userManager.FindByName(email);
+            var isMatch = userManager.CheckPassword(user, password);
+            if (isMatch)
             {
-                return true;
+                var token = db.Tokens.ToList().First(x => x._userId == email);
+                token._expiryDate.AddDays(60);
+                if (token != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return "User in not registered";
+                }
             }
-            else
-            {
-                return false;
+            else {
+                return "Password is incorrect";
             }
         }
 
@@ -156,7 +153,7 @@ namespace ZkhiphavaWeb.Controllers
             var result = UserManager.Create(user, password);
             if (result.Succeeded)
             {
-                var token = saveAppUserAndToken(user);
+                var token = Helper.saveAppUserAndToken(user,db);
                 return  token;
             }
             else {
@@ -164,62 +161,7 @@ namespace ZkhiphavaWeb.Controllers
             }
         }
 
-        public Token saveAppUserAndToken(ApplicationUser user) {
-            var appUser = new User() { email = user.Email, password = user.PasswordHash };
-            var token = createToken(user.Email);
-            db.AppUsers.Add(appUser);
-            db.Tokens.Add(token);
-            db.SaveChanges();
-            return token;
-        }
-
-
-        public Token createToken(string email) {
-                var tokenString = Guid.NewGuid().ToString();
-                var grantDate = DateTime.Now;
-                var endDate = grantDate.AddDays(90);
-                return  new Token(email, tokenString, grantDate, endDate);
-        }
-
        
-       
-
-        public string getNextDay(string curDay)
-        {
-            if (curDay == "Sunday")
-                return "Monday";
-            var days = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            return days[days.IndexOf(curDay) + 1];
-        }
-
-        public OperatingHours[] SortHours(OperatingHours[] opHors) {
-            var days = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-            List<OperatingHours> final  = new List<OperatingHours>();
-            List<OperatingHours> tempList = new List<OperatingHours>();
-            string dayToday             = DateTime.Now.DayOfWeek.ToString(); // today's operating hours
-            OperatingHours todayOp      = opHors.FirstOrDefault(x => x.day == dayToday);
-
-            if (todayOp == null)
-                return opHors;
-            else {
-                final.Add(todayOp);
-                var nextDay = getNextDay(dayToday);
-                foreach (var item in opHors.Where(x => x.day != dayToday))
-                {
-                    if (item.day != nextDay) {
-                        tempList.Add(item);
-                        continue;
-                    }
-                    nextDay = getNextDay(item.day);
-                    final.Add(item);
-                }
-                foreach (var item in tempList)
-                {
-                    final.Add(item);
-                }
-            }
-            return final.ToArray();
-        }
 
         [Route("api/Favorites")]
         [HttpGet]
@@ -233,15 +175,58 @@ namespace ZkhiphavaWeb.Controllers
             }
             return fav;
         }
+
         [Route("api/addFavorite")]
         [HttpGet]
-        public void addFavorite(int userId, int indawoId) {
+        public void addFavorite(string email, int indawoId) {
             
-            var user = db.AppUsers.Find(userId);
+            var user = db.AppUsers.First(x => x.email == email);
+            if (user.LikesLocations == null) {
+                user.LikesLocations += indawoId.ToString() + ",";
+            }
             if(!user.LikesLocations.Split(',').Contains(indawoId.ToString()))
                 user.LikesLocations += indawoId.ToString() + ",";
             db.SaveChanges();
         }
+
+        [Route("api/removeFavorite")]
+        [HttpGet]
+        public void removeFavorite(string email, int indawoId)
+        {
+
+            var user = db.AppUsers.First(x => x.email == email);
+            if (user.LikesLocations.Split(',').Contains(indawoId.ToString()))
+                user.LikesLocations = Helper.BindSplit(user.LikesLocations.Split(',').Where(x => x != indawoId.ToString()));
+            db.SaveChanges();
+        }
+
+        [Route("api/addInterested")]
+        [HttpGet]
+        public void addInterested(string email, int eventId)
+        {
+
+            var user = db.AppUsers.First(x => x.email == email);
+            if (user.interestedEvents == null)
+            {
+                user.interestedEvents += eventId.ToString() + ",";
+            }
+            if (!user.interestedEvents.Split(',').Contains(eventId.ToString()))
+                user.interestedEvents += eventId.ToString() + ",";
+            db.SaveChanges();
+        }
+
+        [Route("api/removeInterested")]
+        [HttpGet]
+        public void removeInterested(string email, int eventId)
+        {
+
+            var user = db.AppUsers.First(x => x.email == email);
+            if (user.interestedEvents.Split(',').Contains(eventId.ToString()))
+                user.interestedEvents = Helper.BindSplit(user.interestedEvents.Split(',').Where(x => x != eventId.ToString()));
+            db.SaveChanges();
+        }
+
+
 
         [Route("api/addInterested")]
         [HttpGet]
@@ -254,12 +239,17 @@ namespace ZkhiphavaWeb.Controllers
 
         [Route("api/getUserData")]
         [HttpGet]
-
-        public object getUserData(int userId)
+        public object getUserData(string email,double lat, double lon)
         {
-            var user = db.AppUsers.First(x => x.id == userId);
-            return Helper.LiekdFromString(user.LikesLocations, user.interestedEvents , db.Indawoes.ToList(),db.Events.ToList());
-            
+            try
+            {
+                var user = db.AppUsers.First(x => x.email == email);
+                return Helper.LiekdFromString(user.LikesLocations, user.interestedEvents, db.Indawoes.ToList(), db.Events.ToList(),db,lat,lon);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
 
@@ -326,7 +316,7 @@ namespace ZkhiphavaWeb.Controllers
             Indawo indawo = db.Indawoes.Find(id);
             //Indawo indawo = LoadJson(@"C:\Users\sibongisenib\Documents\ImportantRecentProjects\listOfIndawoes.json").First(x => x.id == id);
             var OpHours = db.OperatingHours.Where(x => x.indawoId == indawo.id).ToArray();
-            indawo.oparatingHours = SortHours(OpHours);
+            indawo.oparatingHours = Helper.SortHours(OpHours);
             indawo.open = Helper.assignSatus(indawo);
             indawo.closingSoon = Helper.isClosingSoon(indawo);
             indawo.openingSoon = Helper.isOpeningSoon(indawo);
@@ -372,11 +362,6 @@ namespace ZkhiphavaWeb.Controllers
                 }
             }
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        private List<Indawo> getPlacesWithInDistance(string userLocation, List<Indawo> listOfIndawo, string distance)
-        {
-            throw new NotImplementedException();
         }
         private List<Indawo> getIndawoWithIn50k(string userLocation)
         {

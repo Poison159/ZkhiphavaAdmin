@@ -207,6 +207,14 @@ namespace ZkhiphavaWeb.Models
             return strList;
         }
 
+        internal static string BindSplit(IEnumerable<string> enumerable)
+        {
+            var str = "";
+            foreach (var item in enumerable)
+                str += item + ",";
+            return str;
+        }
+
         internal static Dictionary<int, string> getEventNames(List<Event> @events)
         {
             var strList = new Dictionary<int, string>();
@@ -271,25 +279,55 @@ namespace ZkhiphavaWeb.Models
             return d;
         }
 
-        internal static object LiekdFromString(string likesLocations,string interestedEvents, List<Indawo> indawoes, List<Event> events)
+        internal static object LiekdFromString(string likesLocations,string interestedEvents, 
+            List<Indawo> indawoes, List<Event> events, ApplicationDbContext db,double lat, double lon)
         {
             var liked = new List<Indawo>();
             var interested = new List<Event>();
             if(!string.IsNullOrEmpty(likesLocations))
             foreach (var indawoId in likesLocations.Split(',')){
                 try{
-                    liked.Add(indawoes.First(x => x.id == Convert.ToInt32(indawoId)));
+                    liked.Add(Helper.addDistance(indawoes.First(x => x.id == Convert.ToInt32(indawoId)),lat,lon));
                 }
                 catch (Exception){}
             }
             if(!string.IsNullOrEmpty(interestedEvents))
-            foreach (var eventId in interestedEvents.Split(',')){
-                try{
-                    interested.Add(events.First(x => x.id == Convert.ToInt32(eventId)));
+            foreach (var id in interestedEvents.Split(',')){
+                int outPut;
+                if (int.TryParse(id, out outPut))
+                {
+                    var evnt = db.Events.Find(Convert.ToInt32(id));
+                    if (int.TryParse(lat.ToString()[1].ToString(), out outPut) && int.TryParse(lon.ToString()[0].ToString(), out outPut))
+                    {
+                        var locationLat = Convert.ToDouble(evnt.lat, CultureInfo.InvariantCulture);
+                        var locationLon = Convert.ToDouble(evnt.lon, CultureInfo.InvariantCulture);
+                        var userLocationLat = Convert.ToDouble(lat, CultureInfo.InvariantCulture);
+                        var userLocationLong = Convert.ToDouble(lon, CultureInfo.InvariantCulture);
+                        evnt.distance = Math.Round(Helper.distanceToo(locationLat, locationLon, userLocationLat, userLocationLong, 'K'));
+                    }
+                    var eventArtistIds = db.ArtistEvents.ToList().Where(x => x.eventId == evnt.id);
+                    evnt.artists = Helper.getArtists(eventArtistIds, db);
+                    evnt.images = db.Images.Where(x => x.eventName.ToLower().Trim() == evnt.title.ToLower().Trim()).ToList();
+                    evnt.date = Helper.treatDate(evnt.date);
+                    interested.Add(evnt);
                 }
-                catch (Exception) { }
+                else {
+                    continue;
+                }
             }
-            return new { liked = liked.Distinct().ToList(), interested = interested };
+            Helper.prepareLocation(liked, db);
+            return new { liked = liked.Distinct().ToList(), interested = interested.Distinct().ToList() };
+        }
+
+        private static Indawo addDistance(Indawo indawo,double lat, double lon)
+        {
+            var userLocationLat = Convert.ToDouble(lat, CultureInfo.InvariantCulture);
+            var userLocationLong = Convert.ToDouble(lon, CultureInfo.InvariantCulture);
+            var locationLat = Convert.ToDouble(indawo.lat, CultureInfo.InvariantCulture);
+            var locationLon = Convert.ToDouble(indawo.lon, CultureInfo.InvariantCulture);
+            var distanceToIndawo = distanceToo(locationLat, locationLon, userLocationLat, userLocationLong, 'K');
+            indawo.distance = Math.Round(distanceToIndawo);
+            return indawo;
         }
 
         public static double deg2rad(double deg)
@@ -324,6 +362,83 @@ namespace ZkhiphavaWeb.Models
                 }
                 return (dist);
             }
+        }
+
+        public static void prepareLocation(List<Indawo> listOfIndawoes, ApplicationDbContext db) {
+            foreach (var item in listOfIndawoes)
+            {
+                var OpHours = db.OperatingHours.Where(x => x.indawoId == item.id).ToArray();
+                item.images = db.Images.Where(x => x.indawoId == item.id).ToList();
+                item.events = db.Events.Where(x => x.indawoId == item.id).ToList();
+                item.specialInstructions = db.SpecialInstructions.Where(x => x.indawoId == item.id).ToList();
+                item.oparatingHours = SortHours(OpHours);
+                Helper.makeAllOpHoursToday(item);
+                item.open = Helper.assignSatus(item);
+                item.closingSoon = Helper.isClosingSoon(item);
+                item.openingSoon = Helper.isOpeningSoon(item);
+                item.info = Helper.getLocationInfo(item);
+                item.openOrClosedInfo = Helper.getClosedStatus(item);
+                Helper.getOpratingHoursStr(item);
+            }
+        }
+
+        public static OperatingHours[] SortHours(OperatingHours[] opHors)
+        {
+            var days = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            List<OperatingHours> final = new List<OperatingHours>();
+            List<OperatingHours> tempList = new List<OperatingHours>();
+            string dayToday = DateTime.Now.DayOfWeek.ToString(); // today's operating hours
+            OperatingHours todayOp = opHors.FirstOrDefault(x => x.day == dayToday);
+
+            if (todayOp == null)
+                return opHors;
+            else
+            {
+                final.Add(todayOp);
+                var nextDay = getNextDay(dayToday);
+                foreach (var item in opHors.Where(x => x.day != dayToday))
+                {
+                    if (item.day != nextDay)
+                    {
+                        tempList.Add(item);
+                        continue;
+                    }
+                    nextDay = getNextDay(item.day);
+                    final.Add(item);
+                }
+                foreach (var item in tempList)
+                {
+                    final.Add(item);
+                }
+            }
+            return final.ToArray();
+        }
+
+        public static Token saveAppUserAndToken(ApplicationUser user, ApplicationDbContext db)
+        {
+            var appUser = new User() { email = user.Email, password = user.PasswordHash };
+            var token = createToken(user.Email);
+            db.AppUsers.Add(appUser);
+            db.Tokens.Add(token);
+            db.SaveChanges();
+            return token;
+        }
+
+
+        public static Token createToken(string email)
+        {
+            var tokenString = Guid.NewGuid().ToString();
+            var grantDate = DateTime.Now;
+            var endDate = grantDate.AddDays(90);
+            return new Token(email, tokenString, grantDate, endDate);
+        }
+
+        public static string getNextDay(string curDay)
+        {
+            if (curDay == "Sunday")
+                return "Monday";
+            var days = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            return days[days.IndexOf(curDay) + 1];
         }
 
         public static double DistanceTo(double lat1, double lon1, double lat2, double lon2, char unit = 'K')

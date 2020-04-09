@@ -6,12 +6,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div style="padding-top:0px; background-color:transparent">
 
-    @using (Html.BeginForm("Index", "Indawoes", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Indawoes", FormMethod.Get,new {style="margin-right: auto;margin-left: auto;font-weight: bold;padding-bottom:0px;"}))
     {
-        <p class="yellow" style="font-family:'Segoe Print'; float:left; padding-top:0px;">
-            Name @Html.TextBox("name")   vibe: @Html.DropDownList("type", "All")
-            <input type="submit" value="search" />
-        </p>
+    <p class="yellow text-center" style="font-family:'Segoe Print'; padding-top:0px; margin:auto;">
+            Vibe @Html.DropDownList("type", "All") @Html.TextBox("name")
+        <button type="submit" class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-search "></span> Search
+        </button>
+    </p>
     }
 
 </div>
@@ -32,9 +34,13 @@
                 <div class="card-text">
                     @for (int i = 0; i < item.rating; i++)
                     {<span class="fa fa-star yellow"></span>}
-                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "pull-right btn btn-sm btn-primary" })
-                    <a class="pull-right btn btn-primary btn-sm" onclick="getDirections('@item.address')">Directions</a>
-                    <a class="pull-right btn btn-primary btn-sm" href="@Url.Content(item.instaHandle)">Instagram</a>
+                    <a href="@Url.Action("Details", "Indawoes",new {id = item.id})" class="btn pull-right btn-sm btn-primary">Details
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    </a>
+                    <a class="pull-right btn btn-primary btn-sm" onclick="getDirections('@item.address')">
+                        Maps <span class="glyphicon glyphicon-map-marker"></span></a>
+                    <a class="pull-right btn btn-primary btn-sm" href="@Url.Content(item.instaHandle)">
+                        Instagram <span class="glyphicon glyphicon-picture"></span></a>
                 </div>
             </div>
         </div>
@@ -65,15 +71,15 @@
 }
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
-    function getDirections(address) {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                window.location.href = 'https://maps.google.com/maps?saddr=' +
-                    position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + '&daddr=' + encodeURIComponent(address);
-            });
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
+    //function getDirections(address) {
+    //    if (navigator.geolocation) {
+    //        navigator.geolocation.getCurrentPosition(function (position) {
+    //            window.location.href = 'https://maps.google.com/maps?saddr=' +
+    //                position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + '&daddr=' + encodeURIComponent(address);
+    //        });
+    //    } else {
+    //        x.innerHTML = "Geolocation is not supported by this browser.";
+    //    }
+    //}
 
 </script>
